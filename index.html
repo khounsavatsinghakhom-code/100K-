@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>100K ຊ່າງປະຈຳບ້ານ - ສູນລວມຊ່າງມືອາຊີບ ວຽງຈັນ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
     <style>
         :root {
             --primary-bg: #0B132B;
@@ -15,11 +21,13 @@
             --success-green: #00CB44;
         }
         body {
+            /* 🖋️ ນຳໃຊ້ຟ້ອນ Noto Sans Lao ທົ່ວທັງເວັບໄຊ */
             font-family: 'Noto Sans Lao', sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-main);
             margin: 0;
             padding: 0;
+            line-height: 1.6; /* ປັບໄລຍະຫ່າງແຖວໃຫ້ອ່ານງ່າຍ */
         }
         header {
             display: flex;
@@ -31,7 +39,7 @@
         }
         .logo {
             font-size: 24px;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--text-main);
         }
         .logo span {
@@ -39,16 +47,19 @@
         }
         .hero {
             text-align: center;
-            padding: 80px 5%;
+            padding: 90px 5%;
         }
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.4;
             margin-bottom: 20px;
         }
         .hero p {
             font-size: 1.2rem;
             color: var(--text-sub);
             margin-bottom: 40px;
+            font-weight: 300;
         }
         .btn-container {
             display: flex;
@@ -61,35 +72,54 @@
             padding: 15px 30px;
             border: none;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 500;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-orange:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 90, 0, 0.4);
         }
         .btn-blue {
             background-color: #0076FF;
             color: white;
-            padding: 12px 25px;
+            padding: 14px 25px;
             border: none;
-            border-radius: 6px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-weight: 500;
+            font-family: 'Noto Sans Lao', sans-serif;
             cursor: pointer;
             margin-top: 15px;
             display: inline-block;
             width: 100%;
             box-sizing: border-box;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        .btn-blue:hover {
+            background-color: #005ccb;
         }
         .btn-outline {
             border: 2px solid rgba(255,255,255,0.2);
             color: white;
             padding: 15px 30px;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 500;
             cursor: pointer;
             text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.05);
         }
         .services-container {
             padding: 60px 5%;
+        }
+        .services-container h2, .process-section h2, .booking-section h2, .receipt-section h2 {
+            font-weight: 700;
+            font-size: 1.8rem;
         }
         .grid {
             display: grid;
@@ -106,16 +136,18 @@
         .card h3 {
             color: var(--accent-orange);
             margin-top: 0;
+            font-weight: 500;
         }
         .price-list {
             list-style: none;
             padding: 0;
         }
         .price-list li {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             justify-content: space-between;
+            font-size: 15px;
         }
         .process-section, .booking-section, .terms-section, .receipt-section {
             padding: 60px 5%;
@@ -123,15 +155,15 @@
             margin: 40px 0;
             border-radius: 12px;
         }
-        /* Style ລະບົບໃບເຊີວິດຄິດເງິນ */
+        /* Style ລະບົບໃບເຊີວິດຄິດເງິນ - ປັບແຕ່ງໃຫ້ຄືໃບບິນແທ້ */
         .receipt-box {
             background-color: #FFFFFF;
             color: #333333;
-            padding: 30px;
+            padding: 35px 30px;
             border-radius: 12px;
             max-width: 450px;
             margin: 30px auto 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             text-align: left;
             position: relative;
         }
@@ -140,19 +172,20 @@
             color: #0B132B;
             margin-top: 0;
             margin-bottom: 5px;
+            font-weight: 700;
         }
         .receipt-row {
             display: flex;
             justify-content: space-between;
-            margin: 12px 0;
+            margin: 14px 0;
             font-size: 14px;
         }
         .receipt-total {
             display: flex;
             justify-content: space-between;
-            font-size: 18px;
-            font-weight: bold;
-            border-top: 2px dashed #bbb;
+            font-size: 19px;
+            font-weight: 700;
+            border-top: 2px dashed #bbbbbb;
             padding-top: 15px;
             color: var(--accent-orange);
         }
@@ -160,7 +193,7 @@
             text-align: center;
             margin-top: 20px;
             padding-top: 15px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #eeeeee;
         }
         .qr-image {
             width: 180px;
@@ -172,7 +205,7 @@
             justify-content: center;
             font-size: 12px;
             color: #888;
-            border: 1px solid #ddd;
+            border: 1px solid #dddddd;
         }
         /* Style ຟອມ */
         .form-group {
@@ -186,30 +219,41 @@
             display: block;
             margin-bottom: 8px;
             color: var(--text-sub);
+            font-size: 14px;
         }
         .form-group input, .form-group select {
             width: 100%;
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
             background-color: var(--primary-bg);
             color: white;
             box-sizing: border-box;
+            font-family: 'Noto Sans Lao', sans-serif;
         }
         .receipt-section input {
             background-color: #f9f9f9;
             color: #333;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 12px;
             width: 100%;
-            border-radius: 6px;
+            border-radius: 8px;
             box-sizing: border-box;
+            font-family: 'Noto Sans Lao', sans-serif;
+            font-size: 14px;
         }
         footer {
             text-align: center;
             padding: 40px;
             color: var(--text-sub);
             border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        /* ປັບແຕ່ງ Checkbox ໃຫ້ກົດງ່າຍຂຶ້ນ */
+        .receipt-section input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            transform: scale(1.2);
         }
     </style>
 </head>
@@ -217,11 +261,11 @@
 
     <header>
         <div class="logo">100K <span>ຊ່າງປະຈຳບ້ານ</span></div>
-        <a href="#receipt" class="btn-orange" style="padding: 10px 20px;">🧾 ອອກໃບເຊັດ</a>
+        <a href="#receipt" class="btn-orange" style="padding: 10px 20px; font-size: 14px;">🧾 ອອກໃບເຊັດ</a>
     </header>
 
     <section class="hero">
-        <div style="background: rgba(255, 90, 0, 0.1); color: var(--accent-orange); display: inline-block; padding: 5px 15px; border-radius: 20px; margin-bottom: 20px; font-size: 14px;">📍 ໃຫ້ບໍລິການທົ່ວນະຄອນຫຼວງວຽງຈັນ</div>
+        <div style="background: rgba(255, 90, 0, 0.1); color: var(--accent-orange); display: inline-block; padding: 6px 16px; border-radius: 20px; margin-bottom: 25px; font-size: 13px; font-weight: 500;">📍 ໃຫ້ບໍລິການທົ່ວນະຄອນຫຼວງວຽງຈັນ</div>
         <h1>ສູນລວມຊ່າງມືອາຊີບ<br>ໃກ້ບ້ານທ່ານ</h1>
         <p>ເອີ້ນຊ່າງກວດເຊັກທຸກອາການ ເລີ່ມຕົ້ນພຽງ 100,000 ກີບ! ໂປ່ງໃສ ບໍ່ຟັນລາຄາ ໝັ້ນໃຈໄດ້ 100%</p>
         <div class="btn-container">
@@ -233,21 +277,21 @@
     <section class="process-section" style="text-align: center;">
         <h2>⏳ ຂັ້ນຕອນການນັດໝາຍ ແລະ ເຂົ້າບໍລິການ</h2>
         <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
-            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px;">
-                <h4>1. ສົ່ງນັດໝາຍ</h4>
-                <p style="font-size: 14px; margin: 0; color: #ccc;">ລູກຄ້າເລືອກບໍລິການ ແລະ ວັນເວລາທີ່ສະດວກຜ່ານໜ້າເວັບ.</p>
+            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <h4 style="margin-top:0; font-weight:500;">1. ສົ່ງນັດໝາຍ</h4>
+                <p style="font-size: 14px; margin: 0; color: #ccc; font-weight: 300;">ລູກຄ້າເລືອກບໍລິການ ແລະ ວັນເວລາທີ່ສະດວກຜ່ານໜ້າເວັບ.</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px;">
-                <h4>2. ຢືນຢັນຄິວ (4 ໂມງແລງ)</h4>
-                <p style="font-size: 14px; margin: 0; color: #ccc;">ທີມງານຈະຕິດຕໍ່ຢືນຢັນຄິວທຸກໆ 2 ມື້ ຕັ້ງແຕ່ເວລາ 16:00 ນ້ຳ ເປັນຕົ້ນໄປ.</p>
+            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <h4 style="margin-top:0; font-weight:500;">2. ຢືນຢັນຄິວ (4 ໂມງແລງ)</h4>
+                <p style="font-size: 14px; margin: 0; color: #ccc; font-weight: 300;">ທີມງານຈະຕິດຕໍ່ຢືນຢັນຄິວທຸກໆ 2 ມື້ ຕັ້ງແຕ່ເວລາ 16:00 ນ້ຳ ເປັນຕົ້ນໄປ.</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px;">
-                <h4>3. ເຂົ້າເຊີວິດ</h4>
-                <p style="font-size: 14px; margin: 0; color: #ccc;">ຊ່າງເຂົ້າໄປແກ້ໄຂບັນຫາໃຫ້ທ່ານໃນມື້ຕໍ່ມາ ພ້ອມເຄື່ອງມືຄົບຊຸດ.</p>
+            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <h4 style="margin-top:0; font-weight:500;">3. ເຂົ້າເຊີວິດ</h4>
+                <p style="font-size: 14px; margin: 0; color: #ccc; font-weight: 300;">ຊ່າງເຂົ້າໄປແກ້ໄຂບັນຫາໃຫ້ທ່ານໃນມື້ຕໍ່ມາ ພ້ອມເຄື່ອງມືຄົບຊຸດ.</p>
             </div>
-            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px;">
-                <h4>4. ອອກໃບສະຫຼຸບ</h4>
-                <p style="font-size: 14px; margin: 0; color: #ccc;">ຊ່າງຄິດໄລ່ເງິນຜ່ານໃບບິນດິຈິຕອນ ໂປ່ງໃສ ແລະ ສະແກນຈ່າຍໄດ້ທັນທີ.</p>
+            <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent-orange); text-align: left; width: 220px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <h4 style="margin-top:0; font-weight:500;">4. ออกໃບສະຫຼຸບ</h4>
+                <p style="font-size: 14px; margin: 0; color: #ccc; font-weight: 300;">ช่างຄິດໄລ່ເງິນຜ່ານໃບບິນດິຈິຕອນ ໂປ່ງໃສ ແລະ ສະແກນຈ່າຍໄດ້ທັນທີ.</p>
             </div>
         </div>
     </section>
@@ -258,22 +302,22 @@
             <div class="card">
                 <h3>❄️ ໝວດງານແອ</h3>
                 <ul class="price-list">
-                    <li><span>ລ້າງແອປະຈຳປີ</span> <span>120,000 ກີບ</span></li>
-                    <li><span>ຄ່າແຮງປ່ຽນຄາປາຊີເຕີ</span> <span>100,000 ກີບ</span></li>
+                    <li><span>ລ້າງແອປະຈຳປີ</span> <span style="font-weight: 500;">120,000 ກີບ</span></li>
+                    <li><span>ຄ່າແຮງປ່ຽນຄາປາຊີເຕີ</span> <span style="font-weight: 500;">100,000 ກີບ</span></li>
                 </ul>
             </div>
             <div class="card">
                 <h3>⚡ ໝວດງານໄຟຟ້າ</h3>
                 <ul class="price-list">
-                    <li><span>ປ່ຽនປັກສຽບ/ດອກໄຟ (1-2 ຈຸດ)</span> <span>100,000 ກີບ</span></li>
-                    <li><span>กວດລະບົບໄຟຊັອດທັງເຮືອນ</span> <span>250,000 ກີບ</span></li>
+                    <li><span>ປ່ຽນປັກສຽບ/ດອກໄຟ (1-2 ຈຸດ)</span> <span style="font-weight: 500;">100,000 ກີບ</span></li>
+                    <li><span>ກວດລະບົບໄຟຊັອດທັງເຮືອນ</span> <span style="font-weight: 500;">250,000 ກີບ</span></li>
                 </ul>
             </div>
             <div class="card">
                 <h3>🚰 ໝວດງານປະປາ</h3>
                 <ul class="price-list">
-                    <li><span>ປ່ຽນກັອກນ້ຳ/ສາຍສຳລະ</span> <span>100,000 ກີບ</span></li>
-                    <li><span>ຕິດຕັ້ງປ້ຳນ້ຳ + ທໍ່ Bypass</span> <span>350,000 ກີບ</span></li>
+                    <li><span>ປ່ຽນກັອກນ້ຳ/ສາຍສຳລະ</span> <span style="font-weight: 500;">100,000 ກີບ</span></li>
+                    <li><span>ຕິດຕັ້ງປ້ຳນ້ຳ + ທໍ່ Bypass</span> <span style="font-weight: 500;">350,000 ກີບ</span></li>
                 </ul>
             </div>
         </div>
@@ -281,7 +325,7 @@
 
     <section id="booking" class="booking-section" style="text-align: center;">
         <h2>📅 ນັດໝາຍວັນ-ເວລາ ທີ່ທ່ານສະດວກ</h2>
-        <p style="color: var(--accent-orange); font-size: 14px; margin-bottom: 30px;">🔔 ໝາຍເຫດ: ທີມງານຈະຕອບກັບເພື່ອຢືນຢັນຄິວທຸກໆ 2 ມື້ (ຫຼັງເວລາ 16:00 ນ້ຳ ເປັນຕົ້ນໄປ)</p>
+        <p style="color: var(--accent-orange); font-size: 14px; margin-bottom: 30px; font-weight: 500;">🔔 ໝາຍເຫດ: ທີມງານຈະຕອບກັບເພື່ອຢືນຢັນຄິວທຸກໆ 2 ມື້ (ຫຼັງເວລາ 16:00 ນ້ຳ ເປັນຕົ້ນໄປ)</p>
         <div style="max-width: 400px; margin: 0 auto;">
             <div class="form-group">
                 <label>ເລືອກບໍລິການ:</label>
@@ -302,37 +346,37 @@
                     <option value="ຕອນບ່າຍ (13:00 - 17:00)">☀️ ຕອນບ່າຍ</option>
                 </select>
             </div>
-            <button onclick="sendBooking()" class="btn-orange" style="width: 100%;">✅ ຢືນຢັນການນັດໝາຍຊ່າງ</button>
+            <button onclick="sendBooking()" class="btn-orange" style="width: 100%; font-family: 'Noto Sans Lao', sans-serif; font-size: 16px;">✅ ຢືນຢັນການນັດໝາຍຊ່າງ</button>
         </div>
     </section>
 
     <section id="receipt" class="receipt-section" style="text-align: center;">
         <h2>🧾 ໃບສະຫຼຸບງານ ແລະ ອອກໃບເຊັດໃຫ້ລູກຄ້າ</h2>
-        <p style="color: var(--text-sub); max-width: 500px; margin: 0 auto 20px;">ກະລຸນາປ້ອນຂໍ້ມູນລູກຄ້າ ແລະ ເລືອກລາຍການເພື່ອເຈນເປັນໃບຮັບເງິນສົ່ງໃຫ້ລູກຄ້າ</p>
+        <p style="color: var(--text-sub); max-width: 500px; margin: 0 auto 30px; font-weight: 300;">ກະລຸນາປ້ອນຂໍ້ມູນລູກຄ້າ ແລະ ເລືອກລາຍການເພື່ອເຈນເປັນໃບຮັບເງິນສົ່ງໃຫ້ລູກຄ້າ</p>
         
-        <div style="max-width: 450px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px;">
-            <h4 style="color: var(--accent-orange); margin-top: 0;">1. ຂໍ້ມູນລູກຄ້າ:</h4>
-            <div style="margin-bottom: 12px;">
+        <div style="max-width: 450px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.04); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <h4 style="color: var(--accent-orange); margin-top: 0; font-weight: 500;">1. ຂໍ້ມູນລູກຄ້າ:</h4>
+            <div style="margin-bottom: 15px;">
                 <label style="font-size: 14px; color: var(--text-sub);">ຊື່ລູກຄ້າ:</label>
                 <input type="text" id="cust-name" placeholder="ເຊັ່ນ: ທ່ານ ພອນສະຫວັນ" oninput="updateReceiptData()">
             </div>
-            <div style="margin-bottom: 12px;">
+            <div style="margin-bottom: 15px;">
                 <label style="font-size: 14px; color: var(--text-sub);">ເບີໂທຕິດຕໍ່:</label>
                 <input type="text" id="cust-phone" placeholder="ເຊັ່ນ: 020 55xxx..." oninput="updateReceiptData()">
             </div>
 
-            <h4 style="color: var(--accent-orange); margin-top: 20px;">2. ເລືອກລາຍການຄ່າແຮງ:</h4>
-            <label style="display: block; margin: 10px 0;"><input type="checkbox" id="job1" value="100000" onchange="calculateTotal()"> 🛠 ຄ່າຮ້ອງຊ່າງ/ກວດເຊັກ (100,000 ກີບ)</label>
-            <label style="display: block; margin: 10px 0;"><input type="checkbox" id="job2" value="120000" onchange="calculateTotal()"> ❄️ ລ້າງແອປະຈຳປີ (120,000 ກີບ)</label>
-            <label style="display: block; margin: 10px 0;"><input type="checkbox" id="job3" value="100000" onchange="calculateTotal()"> ⚡ ປ່ຽນປັກສຽບ/ດອກໄຟ (100,000 ກີບ)</label>
-            <label style="display: block; margin: 10px 0;"><input type="checkbox" id="job4" value="350000" onchange="calculateTotal()"> 🚰 ຕິດຕັ້ງປ້ຳນ້ຳ + Bypass (350,000 ກີບ)</label>
+            <h4 style="color: var(--accent-orange); margin-top: 25px; font-weight: 500;">2. ເລືອກລາຍການຄ່າແຮງ:</h4>
+            <label style="display: flex; align-items: center; margin: 12px 0; font-size: 14px; cursor: pointer;"><input type="checkbox" id="job1" value="100000" onchange="calculateTotal()"> 🛠 ຄ່າຮ້ອງຊ່າງ/ກວດເຊັກ (100,000 ກີບ)</label>
+            <label style="display: flex; align-items: center; margin: 12px 0; font-size: 14px; cursor: pointer;"><input type="checkbox" id="job2" value="120000" onchange="calculateTotal()"> ❄️ ລ້າງແອປະຈຳປີ (120,000 ກີບ)</label>
+            <label style="display: flex; align-items: center; margin: 12px 0; font-size: 14px; cursor: pointer;"><input type="checkbox" id="job3" value="100000" onchange="calculateTotal()"> ⚡ ປ່ຽນປັກສຽບ/ດอกໄຟ (100,000 ກີບ)</label>
+            <label style="display: flex; align-items: center; margin: 12px 0; font-size: 14px; cursor: pointer;"><input type="checkbox" id="job4" value="350000" onchange="calculateTotal()"> 🚰 ຕິດຕັ້ງປ້ຳນ້ຳ + Bypass (350,000 ກີບ)</label>
             
-            <h4 style="color: var(--accent-orange); margin-top: 20px;">3. ຄ່າອະໄຫຼ່ເພີ່ມເຕີມ (ຖ້າມີ):</h4>
-            <div style="margin-bottom: 12px;">
+            <h4 style="color: var(--accent-orange); margin-top: 25px; font-weight: 500;">3. ຄ່າອະໄຫຼ່ເພີ່ມເຕີມ (ຖ້າມີ):</h4>
+            <div style="margin-bottom: 15px;">
                 <label style="font-size: 14px; color: var(--text-sub);">ລະບຸຄ່າອະໄຫຼ່ (ກີບ):</label>
                 <input type="number" id="spare-cost" value="0" oninput="calculateTotal()" style="margin-top: 5px;">
             </div>
-            <div style="margin-bottom: 12px;">
+            <div style="margin-bottom: 15px;">
                 <label style="font-size: 14px; color: var(--text-sub);">ລາຍລະອຽດອະໄຫຼ່:</label>
                 <input type="text" id="spare-detail" placeholder="ເຊັ່ນ: ກັອກນ້ຳໃໝ່, ຄາປາແອ..." oninput="calculateTotal()">
             </div>
@@ -340,20 +384,20 @@
 
         <div id="receipt-capture-zone" style="max-width: 450px; margin: 0 auto; padding: 10px;">
             <div class="receipt-box" id="my-receipt-box">
-                <div style="text-align: center; border-bottom: 2px dashed #bbb; padding-bottom: 10px; margin-bottom: 15px;">
-                    <h3 style="font-size: 22px; letter-spacing: 1px;">100K ຊ່າງປະຈຳບ້ານ</h3>
-                    <div style="font-size: 11px; color: #666;">ໂທ: 020 XXXXXXXX | ວຽງຈັນ, ສປປ ລາວ</div>
-                    <div style="background: #0B132B; color: white; display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; margin-top: 8px; font-weight: bold;">ໃບຮັບເງິນ / ໃບຮັບປະກັນດິຈິຕອນ</div>
+                <div style="text-align: center; border-bottom: 2px dashed #bbbbbb; padding-bottom: 12px; margin-bottom: 15px;">
+                    <h3 style="font-size: 23px; font-weight: 700; color: #0B132B;">100K ຊ່າງປະຈຳບ້ານ</h3>
+                    <div style="font-size: 12px; color: #555; font-weight: 400; margin-top: 2px;">ໂທ: 020 XXXXXXXX | ວຽງຈັນ, ສປປ ລາວ</div>
+                    <div style="background: #0B132B; color: white; display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 11px; margin-top: 10px; font-weight: 500; letter-spacing: 0.5px;">ໃບຮັບເງິນ / ໃບຮັບປະກັນດິຈິຕອນ</div>
                 </div>
                 
-                <div style="font-size: 13px; color: #333; background: #f9f9f9; padding: 10px; border-radius: 6px; margin-bottom: 15px; border-left: 3px solid #FF5A00;">
-                    <div><strong>ລູກຄ້າ:</strong> <span id="rec-name">---------</span></div>
-                    <div><strong>ເບີໂທ:</strong> <span id="rec-phone">---------</span></div>
-                    <div><strong>ວັນທີ:</strong> <span id="rec-date">--/--/----</span></div>
+                <div style="font-size: 13px; color: #333; background: #f5f6f8; padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #FF5A00;">
+                    <div style="margin-bottom: 4px;"><strong>ລູກຄ້າ:</strong> <span id="rec-name" style="font-weight: 500;">---------</span></div>
+                    <div style="margin-bottom: 4px;"><strong>ເບີໂທ:</strong> <span id="rec-phone" style="font-weight: 500;">---------</span></div>
+                    <div><strong>ວັນທີ:</strong> <span id="rec-date" style="font-weight: 500;">--/--/----</span></div>
                 </div>
 
                 <div id="receipt-items">
-                    <div class="receipt-row"><span style="color:#666;">ຍັງບໍ່ມີການເລືອກລາຍການ</span><span>0 ກີບ</span></div>
+                    <div class="receipt-row"><span style="color:#777;">ຍັງບໍ່ມີການເລືອກລາຍການ</span><span>0 ກີບ</span></div>
                 </div>
                 
                 <div class="receipt-total">
@@ -361,14 +405,14 @@
                     <span id="total-price-display">0 ກີບ</span>
                 </div>
 
-                <div style="margin-top: 15px; font-size: 11px; color: #666; background: #fff8e1; padding: 8px; border-radius: 4px; border: 1px solid #ffe082;">
+                <div style="margin-top: 18px; font-size: 11px; color: #6d4c41; background: #fffde7; padding: 10px; border-radius: 6px; border: 1px solid #fff59d; line-height: 1.5;">
                     🛡️ <strong>ເງື່ອນໄຂການຮັບປະກັນ:</strong> ລະບົບທີ່ສ້ອມແປງມີການຮັບປະກັນຄວາມພຶງພໍໃຈ ແລະ ຕິດຕາມຜົນເປັນເວລາ 15 ວັນ ນັບຈາກວັນທີອອກໃບຮັບເງິນນີ້.
                 </div>
 
                 <div class="qr-container">
-                    <div style="font-weight: bold; font-size: 13px; color: #333; margin-bottom: 5px;">📱 ສະແກນຊຳລະເງິນຜ່ານ BCEL One</div>
+                    <div style="font-weight: 500; font-size: 13px; color: #333; margin-bottom: 6px;">📱 ສະແກນຊຳລະເງິນຜ່ານ BCEL One</div>
                     <img class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=100K_HOME_CHANG_VIENTIANE" alt="BCEL QR Code">
-                    <div style="font-size: 11px; color: #4caf50; font-weight: bold; margin-top: 5px;">✓ ຊຳລະເງິນໂປ່ງໃສ ປອດໄພ 100%</div>
+                    <div style="font-size: 11px; color: #2e7d32; font-weight: 700; margin-top: 6px; letter-spacing: 0.3px;">✓ ຊຳລະເງິນໂປ່ງໃສ ປອດໄພ 100%</div>
                 </div>
             </div>
         </div>
@@ -382,7 +426,7 @@
         <h2>⚠️ ເງື່ອນໄຂການຮັບປະກັນ</h2>
         <ul>
             <li>ງານບໍລິການ ແລະ ງານຕິດຕັ້ງທຸກປະເພດ ມີການຮັບປະກັນລະບົບຫຼັງການຊ່ວຍເຫຼືອ 15 ວັນ.</li>
-            <li>ຫາກລູກຄ້າຕັດສິນໃຈບໍ່ແປງຫຼັງຈາກຊ่างແຈ້ງອາການ, ລູກຄ້າຈະຈ່າຍພຽງຄ່າກວດເຊັກພື້ນຖານ 100,000 ກີບ.</li>
+            <li>ຫາກລູກຄ້າຕັດສິນໃຈບໍ່ແປງຫຼັງຈາກຊ່າງແຈ້ງອາການ, ລູກຄ້າຈະຈ່າຍພຽງຄ່າກວດເຊັກພື້ນຖານ 100,000 ກີບ.</li>
         </ul>
     </section>
 
@@ -414,32 +458,32 @@
             // ກວດເຊັກຄ່າແຮງແຕ່ລະ checkbox
             if(document.getElementById('job1').checked) {
                 total += parseInt(document.getElementById('job1').value);
-                itemsHtml += `<div class="receipt-row"><span>🛠 ຄ່າຮ້ອງຊ່າງ/ກວດເຊັກ</span><span>100,000 ກີບ</span></div>`;
+                itemsHtml += `<div class="receipt-row"><span>🛠 ຄ່າຮ້ອງຊ່າງ/ກວດເຊັກ</span><span style="font-weight:500;">100,000 ກີບ</span></div>`;
             }
             if(document.getElementById('job2').checked) {
                 total += parseInt(document.getElementById('job2').value);
-                itemsHtml += `<div class="receipt-row"><span>❄️ ລ้างແອປະຈຳປີ</span><span>120,000 ກີບ</span></div>`;
+                itemsHtml += `<div class="receipt-row"><span>❄️ ລ້າງແອປະຈຳປີ</span><span style="font-weight:500;">120,000 ກີບ</span></div>`;
             }
             if(document.getElementById('job3').checked) {
                 total += parseInt(document.getElementById('job3').value);
-                itemsHtml += `<div class="receipt-row"><span>⚡ ປ່ຽນປັກສຽບ/ດອກໄຟ</span><span>100,000 ກີບ</span></div>`;
+                itemsHtml += `<div class="receipt-row"><span>⚡ ປ່ຽນປັກສຽບ/ດອກໄຟ</span><span style="font-weight:500;">100,000 ກີບ</span></div>`;
             }
             if(document.getElementById('job4').checked) {
                 total += parseInt(document.getElementById('job4').value);
-                itemsHtml += `<div class="receipt-row"><span>🚰 ຕິດຕັ້ງປ້ຳນ້ຳ + Bypass</span><span>350,000 ກີບ</span></div>`;
+                itemsHtml += `<div class="receipt-row"><span>🚰 ຕິດຕັ້ງປ້ຳນ້ຳ + Bypass</span><span style="font-weight:500;">350,000 ກີບ</span></div>`;
             }
             
-            // ກວດເຊັກຄ່າອະໄຫຼ่
+            // ກວດເຊັກຄ່າອະໄຫຼ່
             let spareCost = parseInt(document.getElementById('spare-cost').value) || 0;
             let spareDetail = document.getElementById('spare-detail').value || 'ຄ່າອະໄຫຼ່ເພີ່ມເຕີມ';
             
             if(spareCost > 0) {
                 total += spareCost;
-                itemsHtml += `<div class="receipt-row"><span style="color:#d32f2f;">⚙️ ອະໄຫຼ່: ${spareDetail}</span><span style="color:#d32f2f;">${spareCost.toLocaleString()} ກີບ</span></div>`;
+                itemsHtml += `<div class="receipt-row"><span style="color:#c62828;">⚙️ ອະໄຫຼ່: ${spareDetail}</span><span style="color:#c62828; font-weight:500;">${spareCost.toLocaleString()} ກີບ</span></div>`;
             }
             
             if(itemsHtml === '') {
-                itemsHtml = `<div class="receipt-row"><span style="color:#666;">ຍັງບໍ່ມີການເລືອກລາຍການ</span><span>0 ກີບ</span></div>`;
+                itemsHtml = `<div class="receipt-row"><span style="color:#777;">ຍັງບໍ່ມີການເລືອກລາຍການ</span><span>0 ກີບ</span></div>`;
             }
             
             // ສະແດງຜົນ
@@ -447,17 +491,15 @@
             document.getElementById('total-price-display').innerHTML = total.toLocaleString() + ' ກີບ';
         }
 
-        // ຟັງຊັນສຳຄັນ: ແຄັບໃບບິນເປັນຮູບພາບແລ້ວດາວໂຫຼດ
+        // ແຄັບໃບບິນເປັນຮູບພາບແລ້ວດາວໂຫຼດ
         function downloadReceiptImage() {
             const receiptZone = document.getElementById('my-receipt-box');
             const customerName = document.getElementById('cust-name').value || 'ລູກຄ້າ';
             
-            // ໃຊ້ html2canvas ເພື່ອແປງ HTML ໃຫ້ເປັນຮູບພາບ
             html2canvas(receiptZone, {
-                scale: 2, // ເພີ່ມຄວາມຄົມຊັດໃຫ້ຮູບພາບເປັນ 2 ເທົ່າ (ຮູບບໍ່ແຕກ)
-                backgroundColor: "#0B132B" // ໃຫ້ພື້ນຫຼັງຮູບພາບມີສີຄືກັບເວັບໄຊ
+                scale: 3, // ເພີ່ມຄວາມຄົມຊັດສູງສຸດເປັນ 3 ເທົ່າ ຮູບຈະເນື້ອລະອຽດງາມຫຼາຍ
+                backgroundColor: "#0B132B"
             }).then(canvas => {
-                // ສ້າງ Link ດາວໂຫຼດຮູບພາບ
                 const link = document.createElement('a');
                 link.download = `ໃບຮັບເງິນ_100K_${customerName}.png`;
                 link.href = canvas.toDataURL('image/png');
@@ -466,7 +508,7 @@
         }
 
         function sendBooking() {
-            const whatsappNumber = "85620XXXXXXXX"; 
+            const whatsappNumber = "85620XXXXXXXX"; // ⚠️ ຢ່າລືມປ່ຽນເປັນເບີຂອງເຈົ້າເດີ້
             const service = document.getElementById('book-service').value;
             const date = document.getElementById('book-date').value;
             const time = document.getElementById('book-time').value;
